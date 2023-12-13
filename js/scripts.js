@@ -19,5 +19,22 @@ SVOLGIMENTO
 const gioca = document.querySelector("button");
 
 gioca.addEventListener("click", function(){
-    alert("ciao")
+    //campo di gioco in input
+    const field = document.querySelector('main > .container');
+    //generazione campo di gioco
+    for (let i = 1; i <= 100; i++) {
+
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.innerHTML = i;
+        field.append(cell);
+        //prendo l'evento click sulle celle generate 
+        cell.addEventListener("click", function() {
+            console.log(this);
+            //aggiungo o tolgo la classe che cambia colore alla cella
+            this.classList.toggle('active'); 
+            //stampo in console la cella cliccata
+            console.log("il numero della cella attivata è:",this.innerHTML) 
+        })
+    }
 })

@@ -16,7 +16,19 @@ html{
 /*
     GENERAL
 */
-
+.cell{
+    width:10%;
+    height:10%;
+    background-color: #8bafc0;
+    border:1px solid #8bafff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.active{
+    background-color: #fd843e;
+    border: 1px solid brown;
+}
 /*
     HEADER
 */
@@ -31,6 +43,12 @@ main{
     background-color: rgb(250, 203, 143);
     padding:30px 0px;
     height:calc(100vh - (var(--height-header) + var(--height-footer)));
+}
+
+main .container{
+    display:flex;
+    flex-wrap: wrap;
+    height:100%;
 }
 /*
     FOOTER
