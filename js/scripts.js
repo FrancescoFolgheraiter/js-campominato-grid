@@ -29,31 +29,30 @@ gioca.addEventListener("click", function(){
     }
     else{
         //dichiarazione variabile totate celle
-        let tot=100;
-        layout="easy";
+        let layout="easy";
         //controllo del quantitativo di celle da generare
         if(level==1){
-            tot=100;
             layout="easy"
+            generateField(field, 100, layout);
         }
         else if(level==2){
-            tot=81;
             layout="medium"
+            generateField(field, 81, layout);
+            
         }
         else{
-            tot=49;
             layout="hard"
-        }
-        generateField(field, tot, layout);
+            generateField(field, 49, layout);
+        }  
         giocoAttivo = true;
     }
 })
 //FUNCTION
-function generateField(stamp, range, disposition){
+function generateField(stamp, range, size){
     //generazione campo di gioco
     for (let i = 1; i <= range; i++) {
         const cell = document.createElement('div');
-        cell.classList.add('cell', disposition);
+        cell.classList.add('cell', size);
         cell.innerHTML = i;
         stamp.append(cell);
         //prendo l'evento click sulle celle generate 
