@@ -19,29 +19,45 @@ SVOLGIMENTO
 const gioca = document.querySelector("button");
 let giocoAttivo = false;
 gioca.addEventListener("click", function(){
-    giocoAttivo.toggle;
+    const level = parseInt(document.querySelector("select").value);
+    console.log(level, typeof level)
     //campo di gioco in input
     const field = document.querySelector('main > .container');
-    //generazione campo di gioco
     if(giocoAttivo){
         field.innerHTML="";
         giocoAttivo = false;
     }
     else{
-        generateField(field);
+        //dichiarazione variabile totate celle
+        let tot=100;
+        layout="easy";
+        //controllo del quantitativo di celle da generare
+        if(level==1){
+            tot=100;
+            layout="easy"
+        }
+        else if(level==2){
+            tot=81;
+            layout="medium"
+        }
+        else{
+            tot=49;
+            layout="hard"
+        }
+        generateField(field, tot, layout);
         giocoAttivo = true;
     }
 })
-
-function generateField(range){
-    for (let i = 1; i <= 100; i++) {
+//FUNCTION
+function generateField(stamp, range, disposition){
+    //generazione campo di gioco
+    for (let i = 1; i <= range; i++) {
         const cell = document.createElement('div');
-        cell.classList.add('cell');
+        cell.classList.add('cell', disposition);
         cell.innerHTML = i;
-        range.append(cell);
+        stamp.append(cell);
         //prendo l'evento click sulle celle generate 
         cell.addEventListener("click", function() {
-            console.log(this);
             //aggiungo o tolgo la classe che cambia colore alla cella
             this.classList.toggle('active'); 
             //stampo in console la cella cliccata
