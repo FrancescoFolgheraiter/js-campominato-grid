@@ -17,17 +17,28 @@ SVOLGIMENTO
 */
 //input pulsante gioca
 const gioca = document.querySelector("button");
-
+let giocoAttivo = false;
 gioca.addEventListener("click", function(){
+    giocoAttivo.toggle;
     //campo di gioco in input
     const field = document.querySelector('main > .container');
     //generazione campo di gioco
-    for (let i = 1; i <= 100; i++) {
+    if(giocoAttivo){
+        field.innerHTML="";
+        giocoAttivo = false;
+    }
+    else{
+        generateField(field);
+        giocoAttivo = true;
+    }
+})
 
+function generateField(range){
+    for (let i = 1; i <= 100; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         cell.innerHTML = i;
-        field.append(cell);
+        range.append(cell);
         //prendo l'evento click sulle celle generate 
         cell.addEventListener("click", function() {
             console.log(this);
@@ -37,4 +48,4 @@ gioca.addEventListener("click", function(){
             console.log("il numero della cella attivata è:",this.innerHTML) 
         })
     }
-})
+}
